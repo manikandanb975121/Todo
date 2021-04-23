@@ -1,0 +1,43 @@
+<div class="row m-5">
+
+    <div class="col-xl-6 col-md-12">
+        <button (click)="openCreate()" mat-mini-fab color="warn" aria-label="Example icon button with a delete icon">
+            <mat-icon>add</mat-icon>
+          </button>
+    </div>
+</div>
+<div class="row m-5" *ngIf="list?.length > 0">
+    <div class="col-xl-6 col-md-12">
+
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel class="p-2 mt-3" *ngFor="let lst of list">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <h2 *ngIf="!lst.completed">{{ lst.work }}</h2>
+                        <del *ngIf="lst.completed" class="h5">{{ lst.work }}</del>
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        <button (click)="edit(lst.id)" class="float-right" mat-mini-fab color="primary">
+                            <mat-icon>done</mat-icon>
+                        </button>
+
+                        <button class="float-right ml-4"  mat-mini-fab color="warn">
+                            <mat-icon (click)="delete(lst.id)">delete</mat-icon>
+                        </button>
+                        
+                      </mat-panel-description>
+                </mat-expansion-panel-header>
+                <!-- <button (click)="edit()" class="float-right" mat-mini-fab color="primary">
+                    <mat-icon>edit</mat-icon>
+                </button>
+
+                <button class="float-right ml-4"  mat-mini-fab color="warn">
+                    <mat-icon (click)="delete()">delete</mat-icon>
+                </button> -->
+            </mat-expansion-panel>
+        </mat-accordion>
+
+
+    </div>
+
+</div>
